@@ -40,4 +40,14 @@ def delete_product(product_id):
 @product_bp.route('/products/update-html', methods=['POST'])
 def update_all_products_html():
     result = product_controller.update_all_products_html()
-    return jsonify(result), 200 if result['status'] == 'success' else 400 
+    return jsonify(result), 200 if result['status'] == 'success' else 400
+
+@product_bp.route('/check-and-store-html', methods=['GET'])
+def check_and_store_html():
+    result = product_controller.check_and_store_html_changes()
+    return jsonify(result), 200 if result['status'] == 'success' else 500
+
+@product_bp.route('/latest-html-check-results', methods=['GET'])
+def get_latest_check_results():
+    result = product_controller.get_latest_check_results()
+    return jsonify(result), 200 if result['status'] == 'success' else 500 

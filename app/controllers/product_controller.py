@@ -64,4 +64,22 @@ class ProductController:
                 'message': f'Updated HTML content for {updated_count} products'
             }
         except Exception as e:
+            return {'status': 'error', 'message': str(e)}
+            
+    def check_and_store_html_changes(self):
+        """
+        Kiểm tra HTML của tất cả sản phẩm và lưu kết quả
+        """
+        try:
+            return self.model.check_and_store_html_changes()
+        except Exception as e:
+            return {'status': 'error', 'message': str(e)}
+            
+    def get_latest_check_results(self):
+        """
+        Lấy kết quả kiểm tra HTML gần nhất
+        """
+        try:
+            return self.model.get_latest_check_results()
+        except Exception as e:
             return {'status': 'error', 'message': str(e)} 
