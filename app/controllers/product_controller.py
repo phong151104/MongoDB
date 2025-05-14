@@ -54,4 +54,14 @@ class ProductController:
                 return {'status': 'success', 'message': 'Product deleted successfully'}
             return {'status': 'error', 'message': 'Product not found'}
         except Exception as e:
+            return {'status': 'error', 'message': str(e)}
+            
+    def update_all_products_html(self):
+        try:
+            updated_count = self.model.update_all_products_html()
+            return {
+                'status': 'success',
+                'message': f'Updated HTML content for {updated_count} products'
+            }
+        except Exception as e:
             return {'status': 'error', 'message': str(e)} 

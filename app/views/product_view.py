@@ -35,4 +35,9 @@ def update_product(product_id):
 @product_bp.route('/products/<product_id>', methods=['DELETE'])
 def delete_product(product_id):
     result = product_controller.delete_product(product_id)
-    return jsonify(result), 200 if result['status'] == 'success' else 404 
+    return jsonify(result), 200 if result['status'] == 'success' else 404
+
+@product_bp.route('/products/update-html', methods=['POST'])
+def update_all_products_html():
+    result = product_controller.update_all_products_html()
+    return jsonify(result), 200 if result['status'] == 'success' else 400 
